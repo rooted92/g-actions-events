@@ -3,8 +3,19 @@ on:
   pull_request:
     types:
       - opened # define list of activity types to trigger on
+    branches:
+      - main
+      - 'dev-*'
+      - 'feat/**'
   # add second trigger
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'dev-*'
+      - 'feat/**'
+    paths-ignore:
+      - '.github/workflows/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest
